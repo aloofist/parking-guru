@@ -7,7 +7,7 @@ type ButtonProps = {
   lucide_icon?: LucideIcon;
 };
 
-export default function Button({ text, route, lucide_icon }: ButtonProps) {
+export default function Button({ text, route, lucide_icon: LucideIcon }: ButtonProps) {
   const navigate = useNavigate();
 
   const handleNavigation = () => {
@@ -21,7 +21,7 @@ export default function Button({ text, route, lucide_icon }: ButtonProps) {
       className="bg-primary200 text-textBlack py-2 rounded-lg shadow-[0_0_5px_0] shadow-primary80 cursor-pointer w-full text-base z-10 flex items-center justify-center gap-2"
     >
       {text}
-      {lucide_icon}
+      {LucideIcon && <LucideIcon/>}
     </button>
   );
 }

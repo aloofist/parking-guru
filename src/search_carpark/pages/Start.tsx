@@ -50,7 +50,7 @@ export default function Start() {
             <ButtonSlider />
             <p className="font-light text-base mt-4">滑動以開始充電</p>
             <Button
-              text="next"
+              text="start charge (remove when slider is working)"
               route="/search_carpark/charging_session"
             />
           </div>

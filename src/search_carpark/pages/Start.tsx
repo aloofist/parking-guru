@@ -1,8 +1,9 @@
 import Header from "../../components/Header";
 import Button from "../../components/Button";
 import ButtonSlider from "../../components/ButtonSlider";
-import IconCCS2 from "../../assets/CCS2.svg"
-import IconCHAdeMO from "../../assets/CHAdeMO.svg"
+import IconCCS2 from "../../assets/CCS2.svg";
+import IconCHAdeMO from "../../assets/CHAdeMO.svg";
+import CityBackdrop from "../../components/CityBackdrop";
 
 const stats = [
   { label: "充電速度", value: "60kWh" },
@@ -13,7 +14,12 @@ const stats = [
 export default function Start() {
   return (
     <>
-      <Header />
+      <Header
+        parking_lot_name="B1023"
+        show_charge_details={true}
+        charging={false}
+        charging_location="B1-A23"
+      />
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-8">
           <div className="bg-black100 p-4 rounded-lg">
@@ -56,8 +62,7 @@ export default function Start() {
           </div>
         </div>
       </div>
+      <CityBackdrop/>
     </>
   );
 }
-
-

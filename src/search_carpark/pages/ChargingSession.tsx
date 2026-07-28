@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 import CarSVG from "../../assets/carIcon.svg";
 import Lightning from "../../assets/Lightning.svg";
 import stripePattern from "../../assets/stripePattern.svg";
-import cityBackdrop from "../../assets/cityBackdrop.svg";
+import CityBackdrop from "../../components/CityBackdrop";
 import { Check } from "lucide-react";
 
 const chargingStats = [
@@ -25,7 +25,12 @@ const chargingStats = [
 export default function ChargingSession() {
   return (
     <>
-      <Header parking_lot_name="B1023" show_charge_details={true} charging={true} charging_location="B1-A23"/>
+      <Header
+        parking_lot_name="B1023"
+        show_charge_details={true}
+        charging={true}
+        charging_location="B1-A23"
+      />
       <div className="flex flex-col bg-black100 rounded-lg">
         <div className="bg-black100 p-4 rounded-lg flex flex-col gap-4 z-10">
           <div className="flex justify-between">
@@ -75,13 +80,9 @@ export default function ChargingSession() {
           ))}
         </div>
       </div>
-      
-      <Button text="結束充電" lucide_icon={Check} />
-      <img
-        src={cityBackdrop}
-        alt="city backdrop"
-        className="absolute z-0 w-full left-0 translate-y-1/2"
-      />
+
+      <Button text="結束充電" lucide_icon={Check} route="/search_carpark/payment_details"/>
+      <CityBackdrop />
     </>
   );
 }

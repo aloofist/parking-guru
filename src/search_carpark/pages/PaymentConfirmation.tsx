@@ -3,7 +3,7 @@ import CityBackdrop from "../../components/CityBackdrop";
 import paymentSuccess from "../../assets/paymentSuccess.svg";
 import { CircleAlert } from "lucide-react";
 import Button from "../../components/Button";
-import { Wallet } from "lucide-react";
+import { Download } from "lucide-react";
 import longArrow from "../../assets/longArrow.svg";
 
 const stats = [
@@ -50,7 +50,7 @@ export default function PaymentDetails() {
         <img src={paymentSuccess} alt="payment icon" />
       </div>
 
-      <div className="flex flex-col z-10 ">
+      <div className="flex flex-col z-10">
         <div className="flex justify-between">
           <div>
             <h1 className="font-bold text-primary100">18:30</h1>
@@ -63,10 +63,16 @@ export default function PaymentDetails() {
           </div>
         </div>
 
-        <div>
-
+        <div className="flex flex-col gap-2 mt-4">
+          {stats.map((item) => (
+            <div className="flex justify-between">
+            <p className="text-sm text-grey120">{item.label}</p>
+            <p className="text-sm">{item.value}</p>
+          </div>
+          ))}
         </div>
       </div>
+
       <div
         className="flex flex-col items-center rounded-lg"
         style={{
@@ -80,9 +86,9 @@ export default function PaymentDetails() {
         </div>
       </div>
       <Button
-        text="支付充電費用"
-        lucide_icon={Wallet}
-        route="/search_carpark/payment_confirmation"
+        text="下載收據"
+        lucide_icon={Download}
+        route="/"
       />
       <CityBackdrop />
     </>

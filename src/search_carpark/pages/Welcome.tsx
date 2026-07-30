@@ -1,5 +1,6 @@
 import Header from "../../components/Header";
 import Button from "../../components/Button";
+import arrow from "../../assets/arrow.svg"
 
 export default function Welcome() {
   return (
@@ -11,6 +12,11 @@ export default function Welcome() {
       </div>
 
       <Button text="歡迎使用" route="/search_carpark/scan" />
+      <img
+      src={arrow}
+      alt="background arrow"
+      className="absolute -z-10 w-full left-0 top-0"
+    />
     </>
   );
 }

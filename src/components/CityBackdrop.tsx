@@ -5,7 +5,7 @@ export default function CityBackdrop() {
     <img
       src={cityBackdrop}
       alt="city backdrop"
-      className="absolute -z-10 w-full left-0 translate-y-[45%]"
+      className="absolute -z-10 w-full left-0 translate-y-[50%]"
     />
   );
 }

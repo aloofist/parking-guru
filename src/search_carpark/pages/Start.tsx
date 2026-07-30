@@ -54,9 +54,9 @@ export default function Start() {
 
           <div className="flex flex-col items-center">
             <ButtonSlider />
-            <p className="font-light text-base mt-4">滑動以開始充電</p>
+            <p className="font-light text-base my-4">滑動以開始充電</p>
             <Button
-              text="start charge (remove when slider is working)"
+              text="start charge (remove)"
               route="/search_carpark/charging_session"
             />
           </div>

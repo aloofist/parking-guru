@@ -57,7 +57,7 @@ export default function Start() {
             <p className="font-light text-base my-4">滑動以開始充電</p>
             <Button
               text="start charge (remove)"
-              route="/search_carpark/charging_session"
+              route="/charging_session"
             />
           </div>
         </div>

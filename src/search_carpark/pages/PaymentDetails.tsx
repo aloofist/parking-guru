@@ -69,7 +69,7 @@ export default function PaymentDetails() {
           <p className="text-sm">非充電時停泊充電車位每分鐘將收取3元。</p>
         </div>
       </div>
-      <Button text="支付充電費用" lucide_icon={Wallet} route="/search_carpark/payment_confirmation"/>
+      <Button text="支付充電費用" lucide_icon={Wallet} route="/payment_confirmation"/>
       <CityBackdrop />
     </>
   );

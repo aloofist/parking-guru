@@ -17,19 +17,19 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        {/* <Route path="/" element={<App />} /> */}
 
-        <Route path="/search_carpark" element={<SearchCarparkLayout/>}>
-          <Route path="welcome" element={<Welcome />} />
-          <Route path="scan" element={<Scan />} />
-          <Route path="start" element={<Start />} />
+        <Route element={<SearchCarparkLayout/>}>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/scan" element={<Scan />} />
+          <Route path="/start" element={<Start />} />
           <Route
-            path="charging_session"
+            path="/charging_session"
             element={<ChargingSession />}
           />
-          <Route path="payment_details" element={<PaymentDetails />} />
+          <Route path="/payment_details" element={<PaymentDetails />} />
           <Route
-            path="payment_confirmation"
+            path="/payment_confirmation"
             element={<PaymentConfirmation />}
           />
         </Route>

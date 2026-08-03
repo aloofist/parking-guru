@@ -81,7 +81,7 @@ export default function ChargingSession() {
         </div>
       </div>
 
-      <Button text="結束充電" lucide_icon={Check} route="/search_carpark/payment_details"/>
+      <Button text="結束充電" lucide_icon={Check} route="/payment_details"/>
       <CityBackdrop />
     </>
   );

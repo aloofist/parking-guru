@@ -11,7 +11,7 @@ export default function Welcome() {
         <h2>自助充電系統</h2>
       </div>
 
-      <Button text="歡迎使用" route="/search_carpark/scan" />
+      <Button text="歡迎使用" route="/scan" />
       <img
       src={arrow}
       alt="background arrow"

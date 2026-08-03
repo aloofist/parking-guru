@@ -6,7 +6,7 @@ export default function Scan() {
   const navigate = useNavigate();
 
   const handleNavigation = () => {
-    navigate("/search_carpark/start");
+    navigate("/start");
   };
   return (
     <>

@@ -1,18 +1,7 @@
 import { ChevronDown } from "lucide-react";
 import arrowPattern from "../assets/arrowPattern.svg";
-import { useRef, useState } from "react";
 
 export default function ButtonSlider() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const thumbRef = useRef<HTMLDivElement>(null);
-
-  const [offset, setOffset] = useState(0); // 0 = top, 1 = bottom
-  const [dragging, setDragging] = useState(false);
-  const [confirmed, setConfirmed] = useState(false);
-  const [pulseTop, setPulseTop] = useState(false);
-
-  const dragStart = useRef({y: 0, offsetPx: 0})
-
   return (
     <div className="flex flex-col items-center relative">
       {/* dot */}
@@ -24,7 +13,7 @@ export default function ButtonSlider() {
 
       {/* pill */}
       <div className="rounded-full border-2 border-primary100 bg-black100 h-50 p-2 mt-5 relative overflow-hidden">
-        <div className="bg-white rounded-full p-4 cursor-grab z-10 relative">
+        <div className="bg-white rounded-full p-4 cursor-grab z-10 relative mt-31">
           <ChevronDown className="size-6" color="#2A2D2A" />
         </div>
         <img

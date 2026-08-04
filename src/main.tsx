@@ -2,7 +2,6 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
 import "./index.css";
-import App from "./App.tsx";
 import {
   Welcome,
   Scan,
@@ -19,14 +18,11 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         {/* <Route path="/" element={<App />} /> */}
 
-        <Route element={<SearchCarparkLayout/>}>
+        <Route element={<SearchCarparkLayout />}>
           <Route path="/" element={<Welcome />} />
           <Route path="/scan" element={<Scan />} />
           <Route path="/start" element={<Start />} />
-          <Route
-            path="/charging_session"
-            element={<ChargingSession />}
-          />
+          <Route path="/charging_session" element={<ChargingSession />} />
           <Route path="/payment_details" element={<PaymentDetails />} />
           <Route
             path="/payment_confirmation"

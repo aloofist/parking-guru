@@ -5,30 +5,24 @@ import { CircleAlert } from "lucide-react";
 import Button from "../../components/Button";
 import { Download } from "lucide-react";
 import longArrow from "../../assets/longArrow.svg";
+import { useParkingFlowData } from "../data/mockData";
+import { useState } from "react";
 
-const stats = [
-  {
-    label: "收費",
-    value: "$3.5/kWh",
-  },
-  {
-    label: "充電量",
-    value: "60.00kWh",
-  },
-  {
-    label: "充電時數",
-    value: "00:21:30",
-  },
-];
+export default function PaymentConfirmation() {
+  const data = useParkingFlowData();
+  const [isCharging] = useState(false);
 
-export default function PaymentDetails() {
+  if (!data) {
+    return null;
+  }
+
   return (
     <>
       <Header
-        parking_lot_name="B1023"
+        parking_lot_name={data.header.parkingLotName}
         show_charge_details={true}
-        charging={false}
-        charging_location="B1-A23"
+        charging={isCharging}
+        charging_location={data.header.chargingLocation}
       />
 
       <div className="flex flex-col bg-black100 rounded-lg">
@@ -36,11 +30,15 @@ export default function PaymentDetails() {
           <div className="flex justify-between">
             <div className="flex flex-col gap-2">
               <h2>付款成功</h2>
-              <h1 className="text-4xl text-primary100 font-bold">HK$ 210</h1>
+              <h1 className="text-4xl text-primary100 font-bold">
+                {data.paymentConfirmation.amountPaid}
+              </h1>
             </div>
             <div className="flex flex-col items-end gap-4">
               <h2 className="text-grey120">電池電量</h2>
-              <h1 className="text-2xl font-bold">60%</h1>
+              <h1 className="text-2xl font-bold">
+                {data.paymentConfirmation.batteryLevel}
+              </h1>
             </div>
           </div>
         </div>
@@ -53,22 +51,30 @@ export default function PaymentDetails() {
       <div className="flex flex-col z-10">
         <div className="flex justify-between">
           <div>
-            <h1 className="font-bold text-primary100">18:30</h1>
-            <h2 className="text-sm mb-2">2026年4月15日</h2>
+            <h1 className="font-bold text-primary100">
+              {data.paymentConfirmation.timeRange.startTime}
+            </h1>
+            <h2 className="text-sm mb-2">
+              {data.paymentConfirmation.timeRange.startDate}
+            </h2>
           </div>
           <img src={longArrow} alt="long arrow icon" className="w-25" />
           <div>
-            <h1 className="font-bold text-right text-primary100">19:30</h1>
-            <h2 className="text-sm mb-2">2026年4月15日</h2>
+            <h1 className="font-bold text-right text-primary100">
+              {data.paymentConfirmation.timeRange.endTime}
+            </h1>
+            <h2 className="text-sm mb-2">
+              {data.paymentConfirmation.timeRange.endDate}
+            </h2>
           </div>
         </div>
 
         <div className="flex flex-col gap-2 mt-4">
-          {stats.map((item) => (
-            <div className="flex justify-between">
-            <p className="text-sm text-grey120">{item.label}</p>
-            <p className="text-sm">{item.value}</p>
-          </div>
+          {data.paymentConfirmation.summary.map((item) => (
+            <div key={item.label} className="flex justify-between">
+              <p className="text-sm text-grey120">{item.label}</p>
+              <p className="text-sm">{item.value}</p>
+            </div>
           ))}
         </div>
       </div>
@@ -82,13 +88,13 @@ export default function PaymentDetails() {
       >
         <div className="bg-black100 w-[90%] flex items-center justify-center py-4 gap-2">
           <CircleAlert color="#e9cc3d" />
-          <p className="text-sm">非充電時停泊充電車位每分鐘將收取3元。</p>
+          <p className="text-sm">{data.paymentConfirmation.notice}</p>
         </div>
       </div>
       <Button
-        text="下載收據"
+        text={data.paymentConfirmation.receiptButtonText}
         lucide_icon={Download}
-        route="/"
+        route={data.paymentConfirmation.route}
       />
       <CityBackdrop />
     </>

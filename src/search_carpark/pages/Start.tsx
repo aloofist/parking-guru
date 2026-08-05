@@ -1,11 +1,11 @@
 import Header from "../../components/Header";
-import Button from "../../components/Button";
 import ButtonSlider from "../../components/ButtonSlider";
 import IconCCS2 from "../../assets/CCS2.svg";
 import IconCHAdeMO from "../../assets/CHAdeMO.svg";
 import CityBackdrop from "../../components/CityBackdrop";
 import { useParkingFlowData } from "../data/mockData";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const connectorIcons = {
   CCS2: IconCCS2,
@@ -15,6 +15,7 @@ const connectorIcons = {
 export default function Start() {
   const data = useParkingFlowData();
   const [isCharging] = useState(false);
+  const navigate = useNavigate();
 
   if (!data) {
     return null;
@@ -66,9 +67,9 @@ export default function Start() {
           </div>
 
           <div className="flex flex-col items-center">
-            <ButtonSlider />
+            <ButtonSlider onComplete={() => navigate(data.start.route)} />
             <p className="font-light text-base my-4">{data.start.sliderText}</p>
-            <Button text={data.start.buttonText} route={data.start.route} />
+            {/* <Button text={data.start.buttonText} route={data.start.route} /> */}
           </div>
         </div>
       </div>

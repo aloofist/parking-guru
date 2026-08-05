@@ -16,6 +16,11 @@ export default function ChargingSession() {
     return null;
   }
 
+  const batteryPercent = Number.parseInt(
+    data.chargingSession.batteryLevel.replace("%", ""),
+    10,
+  );
+
   return (
     <>
       <Header
@@ -43,7 +48,13 @@ export default function ChargingSession() {
 
           <div className="flex justify-between">
             <div className="bg-black150 w-[70%] rounded-md">
-              <div className="bg-linear-90 from-secondary200 to-primary60 w-[70%] h-full rounded-md"></div>
+              {/* fill up bar */}
+              <div
+                className="bg-linear-90 from-secondary200 to-primary60 h-full rounded-md transition-all duration-500 ease-out"
+                style={{
+                  width: `${Number.isNaN(batteryPercent) ? 0 : batteryPercent}%`,
+                }}
+              ></div>
             </div>
             <span className="flex items-center gap-1">
               <img src={Lightning} alt="lightning icon" />

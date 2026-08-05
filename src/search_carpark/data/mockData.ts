@@ -77,7 +77,7 @@ export interface ParkingFlowData {
   paymentConfirmation: PaymentConfirmationData;
 }
 
-const mockParkingFlowData: ParkingFlowData = {
+export const mockParkingFlowData: ParkingFlowData = {
   header: {
     title: "停車場名稱",
     parkingLotName: "B1023",
@@ -106,8 +106,8 @@ const mockParkingFlowData: ParkingFlowData = {
     route: "/charging_session",
   },
   chargingSession: {
-    chargeAmount: "60.00kWh",
-    batteryLevel: "60%",
+    chargeAmount: "67.00kWh",
+    batteryLevel: "67%",
     statusLabel: "充電中",
     updatedAt: "1分鐘前更新",
     chargingStats: [
@@ -165,7 +165,7 @@ export function fetchParkingFlowData(): Promise<ParkingFlowData> {
 }
 
 export function useParkingFlowData() {
-  const [data, setData] = useState<ParkingFlowData | null>(null);
+  const [data, setData] = useState<ParkingFlowData | null>(mockParkingFlowData);
 
   useEffect(() => {
     let isActive = true;
@@ -179,7 +179,7 @@ export function useParkingFlowData() {
     return () => {
       isActive = false;
     };
-  }, []);
+  }, [mockParkingFlowData]);
 
   return data;
 }

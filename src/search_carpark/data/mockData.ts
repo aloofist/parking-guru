@@ -30,7 +30,6 @@ export interface StartData {
   stats: StatItem[];
   connectors: ConnectorOption[];
   sliderText: string;
-  buttonText: string;
   route: string;
 }
 
@@ -102,7 +101,6 @@ export const mockParkingFlowData: ParkingFlowData = {
       { name: "CHAdeMO", iconKey: "CHAdeMO" },
     ],
     sliderText: "滑動以開始充電",
-    buttonText: "start charge (remove)",
     route: "/charging_session",
   },
   chargingSession: {

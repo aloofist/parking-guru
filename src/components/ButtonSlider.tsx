@@ -9,9 +9,15 @@ import arrowPattern from "../assets/arrowPattern.svg";
 
 interface ButtonSliderProps {
   onComplete?: () => void;
+  onStartLoading?: () => void;
+  onStopLoading?: () => void;
 }
 
-export default function ButtonSlider({ onComplete }: ButtonSliderProps) {
+export default function ButtonSlider({
+  onComplete,
+  onStartLoading,
+  onStopLoading,
+}: ButtonSliderProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [offsetY, setOffsetY] = useState(8);
   const [isLocked, setIsLocked] = useState(false);
@@ -60,6 +66,7 @@ export default function ButtonSlider({ onComplete }: ButtonSliderProps) {
   useEffect(() => {
     if (!isLocked) {
       setHasCompleted(false);
+      onStopLoading?.();
       return;
     }
 
@@ -67,9 +74,12 @@ export default function ButtonSlider({ onComplete }: ButtonSliderProps) {
       return;
     }
 
+    onStartLoading?.();
+
     const timer = window.setTimeout(() => {
       setHasCompleted(true);
       onComplete?.();
+      onStopLoading?.();
     }, 1000);
 
     return () => window.clearTimeout(timer);

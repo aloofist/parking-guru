@@ -15,6 +15,7 @@ const connectorIcons = {
 export default function Start() {
   const data = useParkingFlowData();
   const [isCharging] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   if (!data) {
@@ -50,6 +51,7 @@ export default function Start() {
 
         <div className="flex flex-col gap-8">
           <div className="flex [&_div]:w-full [&_div]:flex [&_div]:flex-col [&_div]:gap-2 [&_div]:items-center gap-4">
+            {/* connector buttons */}
             {data.start.connectors.map((connector) => {
               const icon = connectorIcons[connector.iconKey];
 
@@ -67,9 +69,23 @@ export default function Start() {
           </div>
 
           <div className="flex flex-col items-center">
-            <ButtonSlider onComplete={() => navigate(data.start.route)} />
-            <p className="font-light text-base my-4">{data.start.sliderText}</p>
-            {/* <Button text={data.start.buttonText} route={data.start.route} /> */}
+            <ButtonSlider
+              onComplete={() => navigate(data.start.route)}
+              onStartLoading={() => setIsLoading(true)}
+              onStopLoading={() => setIsLoading(false)}
+            />
+            {isLoading ? (
+              <div className="flex items-center gap-2 text-sm text-primary100">
+                <div className="h-3 w-3 rounded-full border-2 border-primary100 border-t-transparent animate-spin" />
+                <span className="font-light text-base my-4">
+                  準備前往充電頁面...
+                </span>
+              </div>
+            ) : (
+              <p className="font-light text-base my-4">
+                {data.start.sliderText}
+              </p>
+            )}
           </div>
         </div>
       </div>
